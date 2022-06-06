@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
 const PORT = process.env.PORT || 8000;
 const tea = {
     'oolong': {
@@ -10,7 +12,7 @@ const tea = {
         'caffine': true,
         'flavor': 'sweet',
     },
-    'macha': {
+    'matcha': {
         'type': 'green',
         'origin': 'Pakistan',
         'waterTemp': 'cold',
@@ -27,6 +29,8 @@ const tea = {
         'flavor': 'unknown',
     }
 }
+
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
